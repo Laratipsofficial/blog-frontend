@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="flex flex-col h-full">
     <Navbar />
 
-    <router-view />
+    <div class="flex-1">
+      <router-view />
+    </div>
 
     <Footer />
   </div>

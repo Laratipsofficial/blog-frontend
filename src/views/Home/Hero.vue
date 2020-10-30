@@ -9,7 +9,7 @@
     <div class="px-4 sm:px-0 absolute inset-0 text-white">
       <div class="container mx-auto h-full flex flex-col justify-center">
         <div>Welcome to</div>
-        <div class="mt-1 text-6xl font-bold">Laratips</div>
+        <div class="mt-1 text-6xl font-bold">LaraTips</div>
         <div class="mt-2 sm:w-1/2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, odio ipsa omnis odit eaque sapiente consectetur voluptatum reiciendis suscipit accusantium pariatur nobis rerum deleniti. Quas hic repellat nihil dolor animi.</div>
 
         <div class="mt-8 text-primary">
