@@ -1,10 +1,11 @@
 <template>
   <nav id="navbar"
-       class="px-4 py-4 sm:py-6 bg-white shadow sm:bg-transparent sm:shadow-none sm:fixed w-full z-10">
+       class="px-4 py-4 sm:py-6 bg-white shadow sm:fixed w-full z-10 transition-colors duration-500"
+       :class="{ 'sm:bg-transparent sm:shadow-none': !showWhiteBackground }">
     <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
       <div class="w-full flex flex-row items-center justify-between">
         <div class="text-3xl font-bold">
-          <span class="sm:text-white">Lara</span>
+          <span :class="{'sm:text-white': !showWhiteBackground}">Lara</span>
           <span class="text-primary">Tips</span>
         </div>
 
@@ -40,8 +41,8 @@
           </button>
         </div>
       </div>
-      <div class="mt-4 sm:mt-0 w-full sm:space-x-4 sm:text-right sm:block sm:text-white"
-          :class="{ 'hidden': !isVisible }">
+      <div class="mt-4 sm:mt-0 w-full sm:space-x-4 sm:text-right sm:block"
+          :class="{ 'hidden': !isVisible, 'sm:text-white': !showWhiteBackground }">
         <NavbarLink to="/articles"
                     label="Articles" />
         <NavbarLink to="/about"
@@ -56,6 +57,7 @@
 <script>
 import NavbarLink from "./NavbarLink.vue";
 import { useToggle } from "@/composables/useToggle";
+import { ref } from 'vue';
 
 export default {
   components: {
@@ -66,10 +68,22 @@ export default {
 
   setup() {
     let { isVisible, toggle } = useToggle();
+    let showWhiteBackground = ref(false);
+
+    document.addEventListener("scroll", function () {
+      let bodyTopPosition = document.body.getBoundingClientRect().top;
+
+      if (bodyTopPosition < -150) {
+        showWhiteBackground.value = true;
+      } else {
+        showWhiteBackground.value = false;
+      }
+    });
 
     return {
       isVisible,
       toggle,
+      showWhiteBackground,
     };
   },
 };
