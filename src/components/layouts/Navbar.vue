@@ -1,6 +1,6 @@
 <template>
   <nav id="navbar"
-       class="px-4 py-4 sm:py-6 bg-white shadow sm:bg-gray-900 sm:shadow-none sm:fixed w-full z-10">
+       class="px-4 py-4 sm:py-6 bg-white shadow sm:bg-transparent sm:shadow-none sm:fixed w-full z-10">
     <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
       <div class="w-full flex flex-row items-center justify-between">
         <div class="text-3xl font-bold">
