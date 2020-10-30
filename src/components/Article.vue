@@ -1,12 +1,18 @@
 <template>
-  <div class="grid sm:grid-cols-5 gap-2 sm:gap-12">
-    <div class="sm:col-span-3 h-64 sm:h-400px">
+  <div :class="{'grid sm:grid-cols-5 gap-2 sm:gap-12': isList}">
+    <div class="h-64"
+      :class="{
+        'sm:h-400px sm:col-span-3': isList,
+        'sm:col-span-5': isGrid,
+      }">
       <img src="/images/image-1.jpg"
            alt="article"
            class="w-full h-full object-cover">
     </div>
-    <div class="sm:col-span-2 flex flex-col justify-between">
-      <div>
+    <div class="mt-1 sm:col-span-2 flex flex-col justify-between">
+      <div :class="{
+        'sm:py-2 sm:mt-0': isGrid
+      }">
         <div class="text-base text-gray-500">Category name</div>
         <h3 class="mt-1 leading-tight text-2xl">
           <router-link to="/articles/article-slug"
@@ -36,9 +42,29 @@
 </template>
 
 <script>
-export default {
-  props: {},
+import { computed } from 'vue';
 
-  setup() {},
+export default {
+  props: {
+    layout: {
+      type: String,
+      default: "list"
+    }
+  },
+
+  setup(props) {
+    let isGrid = computed(() => {
+      return props.layout === 'grid';
+    });
+
+    let isList = computed(() => {
+      return props.layout === 'list';
+    });
+
+    return {
+      isGrid,
+      isList,
+    }
+  },
 };
 </script>

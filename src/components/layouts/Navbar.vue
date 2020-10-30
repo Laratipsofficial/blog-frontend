@@ -43,6 +43,8 @@
       </div>
       <div class="mt-4 sm:mt-0 w-full sm:space-x-4 sm:text-right sm:block"
           :class="{ 'hidden': !isVisible, 'sm:text-white': !showWhiteBackground }">
+        <NavbarLink to="/"
+                    label="Home" />
         <NavbarLink to="/articles"
                     label="Articles" />
         <NavbarLink to="/about"
