@@ -4,12 +4,10 @@
       'space-y-8 sm:space-y-16': isList,
       'grid sm:grid-cols-3 sm:gap-12': isGrid,
     }">
-      <Article :layout="layout" />
-      <Article :layout="layout" />
-      <Article :layout="layout" />
-      <Article :layout="layout" />
-      <Article :layout="layout" />
-      <Article :layout="layout" />
+      <Article :layout="layout"
+               v-for="article in articles"
+               :key="article.id"
+               :article="article" />
     </div>
 
     <div v-if="showViewAll"
@@ -38,6 +36,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    articles: Array,
   },
 
   setup(props) {

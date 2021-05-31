@@ -13,7 +13,8 @@ module.exports = {
         primary: '#e53e3e'
       },
       height: {
-        "400px": "400px"
+        "400px": "400px",
+        "600px": "600px",
       }
     },
   },

@@ -5,22 +5,22 @@
         'sm:h-400px sm:col-span-3': isList,
         'sm:col-span-5': isGrid,
       }">
-      <img src="/images/image-1.jpg"
-           alt="article"
+      <img :src="article.image_url"
+           :alt="article.title"
            class="w-full h-full object-cover">
     </div>
     <div class="mt-1 sm:col-span-2 flex flex-col justify-between">
       <div :class="{
         'sm:py-2 sm:mt-0': isGrid
       }">
-        <div class="text-base text-gray-500">Category name</div>
+        <div class="text-base text-gray-500">{{ article.category.name }}</div>
         <h3 class="mt-1 leading-tight text-2xl">
-          <router-link to="/articles/article-slug"
+          <router-link :to="`/articles/${article.slug}`"
                        class="hover:text-primary font-bold transition-colors duration-300">
-            Lorem, ipsum dolor sit amet consectetur adipisicing.
+            {{ article.title }}
           </router-link>
         </h3>
-        <div class="mt-2 text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quidem maiores quaerat totam libero, et architecto minima magni. Quasi, veritatis...</div>
+        <div class="mt-2 text-gray-700">{{ article.small_description }}</div>
       </div>
       <div class="mt-1 text-base text-gray-500 flex items-center">
         <svg class="w-4 h-4"
@@ -34,7 +34,7 @@
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <div class="ml-2">
-          5 mins ago
+          {{ article.created_at_for_human }}
         </div>
       </div>
     </div>
@@ -49,7 +49,8 @@ export default {
     layout: {
       type: String,
       default: "list"
-    }
+    },
+    article: Object,
   },
 
   setup(props) {

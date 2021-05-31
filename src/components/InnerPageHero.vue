@@ -1,6 +1,6 @@
 <template>
-  <div class="relative z-0 h-40 sm:h-64">
-    <img :src="imageUrl"
+  <div :class="`relative z-0 ${heightClass}`">
+    <img :src="imageUrl?imageUrl:'/images/loading.gif'"
          alt="about"
          class="h-full w-full object-cover">
 
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { computed } from "@vue/runtime-core";
 export default {
   props: {
     imageUrl: {
@@ -28,8 +29,21 @@ export default {
       type: String,
       required: true,
     },
+    height: String,
   },
 
-  setup() {},
+  setup(props) {
+    let heightClass = computed(() => {
+      if (props.height === 'articleDetail') {
+        return "h-auto sm:h-600px";
+      }
+
+      return "h-40 sm:h-64";
+    });
+
+    return {
+      heightClass
+    }
+  },
 };
 </script>
