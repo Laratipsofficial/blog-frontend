@@ -4,14 +4,14 @@
 
   <div class="container mx-auto py-8 sm:py-12 px-4 sm:px-0">
     <div class="grid sm:grid-cols-3 sm:gap-4">
-      <div><span class="text-gray-500">Address:</span> Lorem Ipsum</div>
-      <div><span class="text-gray-500">Phone:</span> +0987654321</div>
-      <div><span class="text-gray-500">Email:</span> info@laratipsofficial.com</div>
+      <div><span class="text-gray-500">Address:</span> {{ settings.address }}</div>
+      <div><span class="text-gray-500">Phone:</span> {{ settings.phone }}</div>
+      <div><span class="text-gray-500">Email:</span> {{ settings.email }}</div>
     </div>
 
     <div class="mt-8 sm:mt-16 grid sm:grid-cols-2 gap-8 sm:gap-12">
       <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198741.27544863918!2d-77.15466025854397!3d38.89351276362806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c6de5af6e45b%3A0xc2524522d4885d2a!2sWashington%2C%20DC%2C%20USA!5e0!3m2!1sen!2snp!4v1604083616504!5m2!1sen!2snp"
+        <iframe :src="settings.google_map_url"
                 class="w-full"
                 height="450"
                 frameborder="0"
@@ -67,6 +67,7 @@
 
 <script>
 import InnerPageHero from "@/components/InnerPageHero";
+import { useSettings } from "@/composables/useSettings.js";
 
 export default {
   components: {
@@ -75,6 +76,12 @@ export default {
 
   props: {},
 
-  setup() {},
+  setup() {
+    let { settings } = useSettings();
+
+    return {
+      settings,
+    }
+  },
 };
 </script>

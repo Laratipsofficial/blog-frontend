@@ -13,11 +13,18 @@
 <script>
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
+import { useSettings } from "@/composables/useSettings.js";
 
 export default {
   components: {
     Navbar,
     Footer,
   },
+
+  setup() {
+    let { fetchSettings } = useSettings();
+
+    fetchSettings();
+  }
 };
 </script>
